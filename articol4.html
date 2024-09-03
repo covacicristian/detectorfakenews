@@ -1,0 +1,277 @@
+            <!DOCTYPE html>
+            <html lang="ro">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Detector Fake News - Articole</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                <style>
+                    body {
+                        background-color: #f4f6f9;
+                        color: #333;
+                    }
+                    .navbar-brand img {
+                        height: 40px;
+                    }
+                    .container {
+                        margin-top: 20px;
+                    }
+                    .article-box {
+                        display: flex;
+                        align-items: center;
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                        border-radius: 8px;
+                        padding: 15px;
+                        margin-bottom: 20px;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                        background-color: #fff;
+                    }
+                    .article-image {
+                        text-align: center;
+                    }
+                    .article-image img {
+                        max-width: 80%;
+                        height: auto;
+                        border-radius: 8px;
+                    }
+                    .article-content {
+                        flex: 1;
+                    }
+                    .article-title {
+                        font-size: 20px;
+                        margin: 0;
+                        color: #333;
+                        font-weight: bold;
+                    }
+                    .article-byline {
+                        font-size: 16px;
+                        color: #555;
+                        margin-top: 5px;
+                    }
+                    
+                    .top_50_number {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #007bff;
+                    }
+                    .content {
+                        margin-top: 20px;
+                    }
+                    .content h2 {
+                        color: #007bff;
+                    }
+                    .content img {
+                        max-width: 100%;
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                    }
+                    .content p {
+                        margin-bottom: 20px;
+                    }
+                    .content .highlight {
+                        font-weight: bold;
+                        color: #d9534f;
+                    }
+                    .title-container {
+                        background-color: #007bff;
+                        color: #fff;
+                        padding: 15px;
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                    }
+                    .title-container h1 {
+                        font-size: 28px;
+                        margin: 0;
+                        font-weight: bold;
+                    }
+                    .title-container h2 {
+                        font-size: 18px;
+                        margin-top: 10px;
+                        font-weight: normal;
+                    }
+                    .highlight-box {
+                        border: 2px solid #007bff; 
+                        border-radius: 8px; 
+                        padding: 20px; 
+                        background-color: #fff8e1; 
+                        margin: 20px 0; 
+                    }
+                    .highlight-box blockquote {
+                        margin: 0;
+                        padding: 10px 0;
+                        font-style: italic;
+                        color: #d9534f; 
+                    }
+                
+                    .navbar-custom {
+                        background-color: #333;
+                    }
+                    .navbar-brand img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    .nav-link {
+                        color: #fff !important;
+                    }
+                    .nav-link:hover {
+                        color: #f8f9fa !important;
+                    }
+                    .logout-btn {
+                        background-color: #dc3545;
+                        border: none;
+                        color: white;
+                        padding: 0.5rem 1rem;
+                        border-radius: 0.25rem;
+                    }
+                    .logout-btn:hover {
+                        background-color: #c82333;
+                        cursor: pointer;
+                    }
+                    .logout-btn-fixed {
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 1030; 
+                    }
+                    .rating_img_wrap {
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .rating_img_wrap img {
+                            margin-right: 15px; 
+                        }
+
+                        .rating_img_wrap div {
+                            font-weight: bold;
+                        }   
+                </style>
+            </head>
+            <body>
+                <!-- Navigatie -->
+                <nav class="navbar navbar-expand-lg navbar-custom">
+                    <a class="navbar-brand" href="#"><img src="favicon.ico" alt="Logo"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="detect.php">Detectare</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="articole.html">Articole</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            
+                <!-- Butonul de logout -->
+                <button class="btn logout-btn logout-btn-fixed" onclick="logout()">Logout</button>
+                <div class="container">
+                    <section class="title-container">
+                        <h1>Trump nu a spus că oamenii ar trebui să „injecteze înălbitor” pentru a combate COVID-19. Iată ce a spus</h1>
+                        <h2>Cu toate acestea, acuratețea a ceea ce a susținut Trump - că au existat "oameni foarte buni de ambele părți" ale dezastrului Unite the Right din 2017 - este pusă sub semnul întrebării.</h2>
+
+                        <div class="article-image">
+                            <img src="articol5.webp" alt="Donald Trump">
+                        </div>
+                    </section>
+                    <section id="fact_check_rating_container">
+                        <div class="highlight-box">
+                            <div class="claim_wrapper">
+                                <h2><strong>Afirmație:</strong></h2>
+                                <div class="claim_cont">Fostul președinte al SUA, Donald Trump, a sugerat odată ca oamenii să injecteze înălbitor sau alți dezinfectanți în corpurile lor pentru a trata COVID-19</div>
+                            </div>
+                            <div class="rating_wrapper">
+                                <h2><strong>Rating:</strong></h2>
+                                <div class="rating_img_wrap">
+                                    <img src="fals.webp" alt="fals">
+                                    <div><strong>Parțial Fals</strong></div> 
+                                </div>
+                            </div>
+                            <<div class="outer_fact_check_context">
+                                <div class="fact_check_info_wrapper">
+                                    <h2><strong>Ce este adevărat?</strong></h2>
+                                    <p class="fact_check_info_description">În timpul unei ședințe de informare media din aprilie 2020, Trump a cerut membrilor grupului de lucru pentru coronavirus al guvernului să investigheze dacă dezinfectanții ar putea fi injectați în oameni pentru a trata COVID-19. Dar când un reporter a întrebat într-o întrebare ulterioară dacă produsele de curățare, cum ar fi înălbitorul și alcoolul izopropilic, ar fi injectate într-o persoană, președintele de atunci a spus că aceste produse ar fi folosite pentru sterilizarea unei zone, nu pentru injecții.</p>
+                                </div>
+                                <div class="fact_check_info_wrapper">
+                                    <h2><strong>Ce este fals?</strong></h2>
+                                    <p class="fact_check_info_description">Cu toate acestea, Trump nu a spus niciodată în mod explicit oamenilor că ar putea sau ar trebui să injecteze înălbitor în corpurile lor.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="content">
+                        <h2>Context și Informații</h2>
+                        <p>Într-o conferință de presă după mitingul de protest împotriva îndepărtării planificate a unei statui confederate, Trump a spus că au fost "oameni foarte buni de ambele părți", referindu-se la protestatari și contraprotestatari. El a spus în aceeași declarație că nu vorbea despre neonaziști și naționaliști albi, pe care a spus că ar trebui să fie "condamnați total".</p>
+                
+                        <p><strong>Verificarea Faptelor:</strong> În primăvara anului 2024, postările pe rețelele sociale au readus în atenție un comentariu infam al fostului președinte american Donald Trump legat de violențele din Charlottesville, Virginia, cauzate de îndepărtarea unei statui confederate.</p>
+
+                        <p>În primăvara anului 2024, postările pe rețelele sociale au readus în atenție un comentariu infam al fostului președinte american Donald Trump legat de violențele din Charlottesville, Virginia, cauzate de îndepărtarea unei statui confederate.</p>
+
+                        <p>Pe 11 și 12 august 2017, mitingul numit „Unite the Right” (Împreună Dreapta) care protesta împotriva planului de îndepărtare a unei statui a generalului confederat Robert E. Lee dintr-un parc, a devenit violent atunci când neo-naziștii, suprematiștii albi și alții legați de grupuri de extremă dreapta s-au ciocnit cu contraprotestatarii de stânga. Un suprematist alb autoidentificat a lovit cu mașina o mulțime de oameni, omorând una dintre persoane și rănind cel puțin 19.</p>
+                        
+                        <p>Richard B. Spencer și Jason Kessler — ambii naționaliști albi — au planificat mitingul, iar David Duke, fost lider al Ku Klux Klan, a participat.</p>
+                        
+                        <p>Într-o conferință de presă din 15 august, fostul președinte american Donald Trump a fost întrebat să comenteze evenimentul și a spus faimos că erau „persoane foarte bune de ambele părți.” Această reacție a primit critici pe scară largă; mulți au susținut că Trump a plasat neo-naziștii și contraprotestatarii pe „aceeași plan morală.”</p>
+                        
+                        <p>Criticii lui Trump au afirmat în mod specific că el a numit neo-naziștii și suprematiștii albi de la miting „persoane foarte bune.” Această afirmație s-a răspândit rapid, cu candidatul prezidențial de atunci Joe Biden făcând din comentariile lui Trump despre Charlottesville un pilon al campaniei sale.</p>
+                        
+                        <p>Șeful majorității din Senat, Chuck Schumer, a spus într-un discurs că „nimeni care împarte masa cu antisemite precum Nick Fuentes și care i-a numit pe suprematiștii albi din Charlottesville 'persoane foarte bune,' sau care, așa cum s-a raportat recent, a spus dezgustător că Hitler a făcut câteva lucruri bune, nu are dreptul să ofere lecții americanilor evrei despre credințele lor politice personale.”</p>
+                        
+                        <div id="tweet0" class="twitter_tweet_display_box" data-tweet-id="1770216208974881232" data-callback="lazy_load_9bbac876_6be70fbe_1"><div class="twitter-tweet twitter-tweet-rendered" style="display: flex; max-width: 550px; width: 100%; margin-top: 10px; margin-bottom: 10px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="X Post" src="https://platform.twitter.com/embed/Tweet.html?creatorScreenName=snopes&amp;dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=1770216208974881232&amp;lang=en&amp;origin=https%3A%2F%2Fwww.snopes.com%2Ffact-check%2Ftrump-very-fine-people%2F&amp;sessionId=1f569a415d4ec4da3947e28585c374bd242fae51&amp;siteScreenName=snopes&amp;theme=light&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716&amp;width=550px" style="position: static; visibility: visible; width: 550px; height: 897px; display: block; flex-grow: 1;" data-tweet-id="1770216208974881232"></iframe></div></div>
+                    
+                        <p>Suportatorii lui Trump au susținut în mod constant că el a condamnat de fapt neonaziștii și supremațiștii albi la miting.</p>
+                        
+                        <div id="tweet1" class="twitter_tweet_display_box" data-tweet-id="1802392254340116903" data-callback="lazy_load_4d2daed7_61636f4e_1"><div class="twitter-tweet twitter-tweet-rendered" style="display: flex; max-width: 550px; width: 100%; margin-top: 10px; margin-bottom: 10px;"><iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="X Post" src="https://platform.twitter.com/embed/Tweet.html?creatorScreenName=snopes&amp;dnt=false&amp;embedId=twitter-widget-1&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=1802392254340116903&amp;lang=en&amp;origin=https%3A%2F%2Fwww.snopes.com%2Ffact-check%2Ftrump-very-fine-people%2F&amp;sessionId=1f569a415d4ec4da3947e28585c374bd242fae51&amp;siteScreenName=snopes&amp;theme=light&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716&amp;width=550px" style="position: static; visibility: visible; width: 550px; height: 914px; display: block; flex-grow: 1;" data-tweet-id="1802392254340116903"></iframe></div></div>
+                        
+                    
+                        <p>Am analizat aceste afirmații și am constatat că, deși Trump a spus că au fost „oameni foarte buni de ambele părți”, referindu-se atât la protestatari, cât și la contraprotestatari, el a condamnat și neo-naziștii și naționaliștii albi în mod direct și a spus că se referea în mod specific la cei care erau acolo doar pentru a participa la protestul statuii. Am găsit clipul original pe C-SPAN și am transcris secțiunea relevantă mai jos:  </p>
+                        
+                        <div class="highlight-box">
+                        <blockquote>
+                            <p><strong>Reporter:</strong> Domnule Președinte, puneți ceea ce numiți „alt-stânga” și suprematiștii albi pe aceeași plan morală?</p>
+                        
+                            <p><strong>Trump:</strong> Nu pun pe nimeni pe o plană morală, ce vreau să spun este asta: Ați avut un grup de o parte și un grup de cealaltă parte, și s-au atacat reciproc cu ciocane și a fost violent și oribil și a fost un lucru oribil de urmărit, dar există și o altă parte. A fost un grup de această parte, îi puteți numi „stânga”. Tocmai i-ați numit „stânga”, care a venit atacând violent grupul celălalt. Așa că puteți spune ce doriți, dar așa stau lucrurile.</p>
+                        
+                            <p><strong>Reporter:</strong> Ați spus că a fost ură și violență de ambele părți?</p>
+                        
+                            <p><strong>Trump:</strong> Cred că este vină — da, cred că este vină de ambele părți. Priviți, priviți ambele părți. Cred că este vină de ambele părți și nu am niciun dubiu despre asta, și nici voi nu aveți niciun dubiu despre asta. Și, și, și, și dacă ați raportat exact, ați spune.</p>
+                        
+                            <p><strong>Reporter:</strong> Neo-naziștii au început această treabă. Au apărut în Charlottesville.</p>
+                        
+                            <p><strong>Trump: </strong>Scuzați-mă, nu s-au prezentat ca neo-naziști și ați avut câțiva oameni foarte răi în acel grup. Dar ați avut și oameni care erau persoane foarte bune, de ambele părți. Ați avut oameni în acel grup — scuze-mă, scuze-mă, am văzut aceleași imagini pe care le-ați văzut și voi — ați avut oameni în acel grup care erau acolo pentru a protesta împotriva îndepărtării, pentru ei, a unei statui foarte, foarte importante și a redenumirii unui parc din Robert E. Lee într-un alt nume. George Washington a fost proprietar de sclavi. A fost George Washington un proprietar de sclavi? Așa că George Washington își va pierde acum statutul, vom lua — scuze-mă — vom lua statui ale lui George Washington? Cum rămâne cu Thomas Jefferson? Ce părere aveți despre Thomas Jefferson? Îți place? Bine. Vom lua statuia? Pentru că el a fost un mare proprietar de sclavi. Acum vom lua statuia lui? Așa că, știți ce? E în regulă. Schimbați istoria, schimbați cultura, și ați avut oameni — și nu vorbesc despre neo-naziști și naționaliștii albi, pentru că aceștia ar trebui condamnați complet. Dar ați avut mulți oameni în acel grup care nu erau neo-naziști și naționaliști albi, bine? Și presa i-a tratat absolut nedrept. Acum, în celălalt grup, de asemenea, ați avut câțiva oameni buni, dar ați avut și provocatori, și îi vedeți venind cu haine negre și cu căști și cu bâte de baseball, ați avut mulți oameni răi în celălalt grup, de asemenea.</p>
+                        
+                            <p><strong>Reporter:</strong> Îmi pare rău, domnule, nu am înțeles ce ați spus, spuneți că presa i-a tratat nedrept pe naționaliștii albi? Nu înțeleg ce spuneți.</p>
+                        
+                            <p><strong>Trump:</strong> Nu, nu. Au fost oameni în acel miting — și am privit cu o noapte înainte — dacă priviți, au fost oameni care protestau foarte liniștiți împotriva îndepărtării statuii lui Robert E. Lee. Sunt sigur că în acel grup au fost câțiva răi. În ziua următoare părea că aveau câțiva oameni duri, răi. Neo-naziști, naționaliști albi, ce doriți să le spuneți. Dar ați avut mulți oameni în acel grup care erau acolo pentru a protesta inocent — și foarte legal — pentru că nu știu dacă știți, aveau un permis. Celălalt grup nu avea permis. Așa că vă spun doar asta, sunt două părți ale unei povești. Am considerat că ceea ce s-a întâmplat a fost un moment groaznic pentru țara noastră. Un moment groaznic. Dar sunt două părți ale țării.</p>
+                        </blockquote>
+                    </div>         
+                    <p>În ciuda condamnării explicite a neo-naziștilor și naționaliștilor albi din partea lui Trump, majoritatea liderilor și grupurilor de extremă dreapta au primit discursul pozitiv. "Mulțumim, Președinte Trump, pentru onestitatea și curajul de a spune adevărul despre #Charlottesville și de a condamna teroriștii de stânga din BLM/Antifa," a postat Duke, un fost mare vrăjitor al KKK, pe X ca răspuns la comentariile lui Trump.</p>
+
+            <p>Pe 12 august 2017, înainte de conferința de presă în care a condamnat în cele din urmă suprematiștii albi, Trump postase pe X abordând vag violența care se desfășura în Charlottesville. "Trebuie să fim UNITI și să condamnăm tot ce reprezintă ura," a scris el. "Nu este loc pentru acest tip de violență în America. Să venim împreună ca unul!"</p>
+
+            <p>Apoi, el a făcut o declarație de pe terenul său de golf din New Jersey care a început cu: "Condamnăm în cele mai puternice termeni această manifestare flagrantă de ură, bigotism și violență din multe părți, din multe părți." Aceste declarații au primit o reacție negativă larg răspândită pentru că nu au abordat explicit prezența naziștilor și suprematiștilor albi.</p>
+
+            <p>Am verificat anterior afirmația că Trump a refuzat să condamne explicit suprematiștii albi în timpul dezbaterii prezidențiale din septembrie 2020.</p>
+
+            <p>În concluzie, deși Trump a spus că erau "oameni foarte buni de ambele părți," el a notat de asemenea că nu vorbea despre neo-naziști și suprematiști albi și a spus că aceștia ar trebui "condamnați total." Prin urmare, am evaluat această afirmație ca fiind "Falsă."</p>
+
+
+                    </div>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                <script>
+                    function logout() {
+                        alert("Ați fost deconectat!");
+                        window.location.href = 'login.php';
+                    }
+                    </script>
+            </body>
+            </html>

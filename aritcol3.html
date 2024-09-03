@@ -1,0 +1,241 @@
+    <!DOCTYPE html>
+    <html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detector Fake News - Articole</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            body {
+                background-color: #f4f6f9;
+                color: #333;
+            }
+            .navbar-brand img {
+                height: 40px;
+            }
+            .container {
+                margin-top: 20px;
+            }
+            .article-box {
+                display: flex;
+                align-items: center;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+            .article-image {
+                text-align: center; 
+            }
+            .article-image img {
+                max-width: 80%; 
+                height: auto;
+                border-radius: 8px;
+            }
+            .article-content {
+                flex: 1;
+            }
+            .article-title {
+                font-size: 20px;
+                margin: 0;
+                color: #333;
+                font-weight: bold;
+            }
+            .article-byline {
+                font-size: 16px;
+                color: #555;
+                margin-top: 5px;
+            }
+          
+            
+            .top_50_number {
+                font-size: 24px;
+                font-weight: bold;
+                color: #007bff;
+            }
+            .content {
+                margin-top: 20px;
+            }
+            .content h2 {
+                color: #007bff;
+            }
+            .content img {
+                max-width: 100%;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .content p {
+                margin-bottom: 20px;
+            }
+            .content .highlight {
+                font-weight: bold;
+                color: #d9534f;
+            }
+            .title-container {
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .title-container h1 {
+                font-size: 28px;
+                margin: 0;
+                font-weight: bold;
+            }
+            .title-container h2 {
+                font-size: 18px;
+                margin-top: 10px;
+                font-weight: normal;
+            }
+            .highlight-box {
+                border: 2px solid #f39c12; 
+                background-color: #f9e79f; 
+                padding: 20px; 
+                margin: 20px 0; 
+                border-radius: 8px; 
+            }
+            .highlight-box h2 {
+                color: #e67e22; 
+                margin-top: 0; 
+            }
+            .highlight-box ul {
+                list-style-type: disc; 
+                padding-left: 20px; 
+            }
+            .highlight-box a {
+                color: #3498db; 
+                text-decoration: none; 
+            }
+            .highlight-box a:hover {
+                text-decoration: underline; 
+            }
+            .navbar-custom {
+                background-color: #333;
+            }
+            .navbar-brand img {
+                width: 40px;
+                height: 40px;
+            }
+            .nav-link {
+                color: #fff !important;
+            }
+            .nav-link:hover {
+                color: #f8f9fa !important;
+            }
+            .logout-btn {
+                background-color: #dc3545;
+                border: none;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+            }
+            .logout-btn:hover {
+                background-color: #c82333;
+                cursor: pointer;
+            }
+            .logout-btn-fixed {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1030; 
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigatie -->
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <a class="navbar-brand" href="#"><img src="favicon.ico" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="detect.php">Detectare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articole.html">Articole</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- Butonul de logout -->
+        <button class="btn logout-btn logout-btn-fixed" onclick="logout()">Logout</button>
+
+        <div class="container">
+            <section class="title-container">
+                <h1>Faptele despre Project 2025: Propunerea pro-Trump de a „reforma America”</h1>
+                <h2>Iată o privire neutră asupra celor care sunt în spatele inițiativei, ce include aceasta — și așa mai departe.</h2>
+
+                <div class="article-image">
+                    <img src="articol4.webp" alt="Project 2025">
+                </div>
+            </section>
+
+            <!-- Secțiunea de puncte cheie -->
+            <div class="highlight-box">
+                <h2>Key Notes</h2>
+                <ul>
+                    <li><span>Proiectul 2025 este un plan al unei coaliții conservatoare pentru o viitoare administrație prezidențială republicană în SUA. Dacă alegătorii îl vor alege pe nominalizat, Donald Trump, în locul democratului Joe Biden în noiembrie 2024, coaliția speră că noul președinte va implementa planul imediat.</span></li>
+                    <li><span>Efortul amplu se centrează pe un document de aproximativ 1.000 de pagini </span><a href="https://media.snopes.com/2024/06/2025_mandate_for_leadership_compressed.pdf" target="_self"><span>document</span></a><span>&nbsp;care oferă ramurii executive mai multă putere, inversează politicile din era Biden și specifică numeroase schimbări la nivelul departamentelor.</span></li>
+                    <li><span>Oamenii din întreaga spectru politic se tem că astfel de acțiuni sunt precursorii autoritarismului și și-au exprimat îngrijorările cu privire la recomandările propunerii de a inversa protecțiile pentru persoanele LGBTQ+, de a limita accesul la avort, de a opri eforturile federale de a atenua schimbările climatice — și altele.</span></li>
+                    <li><span>The Heritage Foundation — un think tank conservator condus de mulți dintre actualii și foștii aliați politici ai lui Trump — este liderul inițiativei. Președintele Kevin Roberts a </span><a href="https://www.nytimes.com/2024/01/21/magazine/heritage-foundation-kevin-roberts.html" target="_blank"><span>spus</span></a><span>&nbsp;că principalele obiective ale proiectului sunt „instituționalizarea Trumpismului” și eliminarea birocraților nealeși care, în opinia sa, dețin prea multă influență politică.</span></li>
+                    <li><span>Obiectivele și propunerile campaniei lui Trump în cadrul Proiectului 2025 se suprapun. Cu toate acestea, fostul președinte a încercat să se distanțeze de inițiativă. Într-o postare din 5 iulie 2024 pe </span><a href="https://truthsocial.com/@realDonaldTrump" target="_blank"><span>Truth Social</span></a><span>, el a scris: „Nu știu nimic despre Proiectul 2025. Nu am idee cine este în spatele lui. Nu sunt de acord cu unele dintre lucrurile pe care le spun și unele dintre lucrurile pe care le spun sunt absolut ridicole și dezastruoase. Orice ar face, le doresc succes, dar nu am nimic de-a face cu ei.”</span></li>
+                    <li><span>In other words, it's unknown if, or to what extent, Trump's campaign is talking to leaders of the initiative. Many political analysts and the Biden administration believe Project 2025 is a good indication of Trump's vision for a second term.</span></li>
+                </ul>
+            </div>
+            <div class="content">
+                <h2>Context și Informații</h2>
+                <p>În timp ce președintele american Joe Biden se confruntă cu tot mai multe apeluri din partea democraților pentru a-și încheia campania pentru realegere, echipa sa încearcă să atragă atenția asupra Proiectului 2025 — o propunere extinsă a unei organizații nonprofit conservatoare, The Heritage Foundation, de a remodela guvernul american. De exemplu, o reclamă din iulie 2024 a campaniei Biden descria Proiectul 2025 ca fiind „un plan pentru al doilea mandat al lui Trump” și un mecanism pentru „a demonta democrația așa cum o știm”.</p>
+
+            <p><strong>Verificarea Faptelor:</strong> De luni de zile, echipa lui Biden a trimis e-mailuri alarmante susținătorilor, invocând „Proiectul 2025 al lui Trump” pentru a valorifica temerile legate de încă patru ani cu Trump în Casa Albă și pentru a strânge fonduri pentru campanie. Potrivit unor e-mailuri, „Proiectul 2025” preconizează propuneri care ar separa „mamele de copiii lor”, o referire la politicile de frontieră din timpul administrației Trump, sau ar duce la „costuri mai mari pentru locuințe și discriminare răspândită”.</p>.
+
+            <p>Cu toate acestea, campania Biden nu este singura preocupată de inițiativa de politică. Criticii, inclusiv experți legali și foști angajați ai guvernului, au descris Proiectul 2025 ca fiind un precursor al autoritarismului — deși unul dificil de implementat — și o serie de postări pe rețelele sociale exprimă frica față de inițiativă, numind-o un plan „fascist” și „extremist” al lui Trump pentru a „remodela America”. Numeroase rapoarte au descris, de asemenea, acest efort conservator de a remodela guvernul ca fiind fără precedent în amploarea sa.</p>
+
+            <p>Dar ce este exact Proiectul 2025? Sunt mesajele criticilor fundamentate în fapte sau sunt doar alarmism? Ce ar trebui să știe oamenii despre presupusul plan de politică? Pe parcursul anului trecut, Snopes a primit un număr mare de întrebări de la cititori care se întrebau dacă Proiectul 2025 este real și ce implică, și dacă politicienii americani intenționează să-l implementeze.</p>
+            
+            <p>Sub conducerea The Heritage Foundation, un think tank conservator, Proiectul 2025 este într-adevăr o inițiativă reală, cuprinzătoare, pentru a transforma birocrația americană, dacă, sau când, un președinte conservator va prelua Casa Albă. Liderii proiectului speră să-l pună în aplicare cât mai curând posibil, în noiembrie 2024, dacă alegătorii îl vor alege pe fostul președinte Donald Trump.</p>
+            
+            <p>Politico a descris odată inițiativa de politică ca un efort de a crea un guvern conservator „MAGA” prin remodelarea modului în care angajații federali lucrează, iar creatorii înșiși au înfățișat-o ca pe o tentativă de a institutionaliza „Trumpismul” — adică agenda politică a lui Trump — la toate nivelurile guvernului federal. Pe Truth Social, o platformă de socializare deținută de Trump, utilizatorii au descris-o ca un revenire la valorile „constituționale”.</p>
+            
+            <p>În iunie 2024, democrații din Camera Reprezentanților au lansat o echipă de lucru pentru a împiedica recomandările Proiectului 2025 să devină realitate.</p>
+            
+            <p>Interesul crescând pentru Proiectul 2025 a coincis cu progresul campaniei prezidențiale a lui Trump. Un sondaj NPR/PBS News/Marist din iunie 2024 a constatat că cursa prezidențială era extrem de strânsă, cu Biden și Trump aproape egali, reflectând o tendință de luni de zile a sondajelor naționale. (Istoric, sondajele la acest stadiu al campaniilor nu sunt indicative pentru rezultatele reale ale alegerilor.)</p>
+            
+            <p>Liderii și susținătorii inițiativei au refuzat să fie intervievați pentru această poveste sau nu au răspuns întrebărilor Snopes.</p>
+            
+            <h2>Ce este Proiectul 2025?</h2>
+            
+            <p>Proiectul 2025 are patru părți, conform site-ului său:</p>
+            
+            <p>Un document de aproximativ 1.000 de pagini intitulat „Mandate for Leadership 2025: The Conservative Promise.” Acest raport detaliază propunerile susținătorilor pentru departamentele federale, precum și agenda lor generală pentru un guvern conservator.</p>
+            
+            <p>Un plan de tranziție presupus pentru departamentele federale. Liderii Proiectului 2025 spun că au un plan de tranziție de 180 de zile pentru fiecare agenție federală pentru a se adapta rapid la o președinție Trump, în cazul în care acesta câștigă în noiembrie. Până în prezent, conținutul acelui plan nu era cunoscut.</p>
+            
+            <p>O nouă bază de date care își propune să umple locurile de muncă federale cu voci conservatoare. Spencer Chretien, director asociat al Proiectului 2025, a numit odată sistemul online de selecție a noilor angajați „LinkedIn-ul conservator”. Este activ în prezent pe site-ul Proiectului.</p>
+            
+            <p>Un nou sistem pentru instruirea posibilelor numiri politice. Intitulat „Presidential Administration Academy”, sistemul își propune să învețe abilități pentru „avansarea ideilor conservatoare” de îndată ce noii angajați se alătură administrației. Lecțiile acoperă totul, de la elaborarea bugetului la relațiile cu mass-media și constau în sesiuni online de 30 până la 90 de minute. Liderii Proiectului 2025 spun că vor organiza sesiuni în persoană pe măsură ce alegerile se apropie.</p>
+            
+            <p>Se pare că există o altă fațetă a Proiectului 2025 care nu este detaliată pe site-ul său: un efort de a redacta ordine executive pentru noul președinte. Potrivit unui raport din noiembrie 2023 al The Washington Post, care citează surse anonime, Jeffrey Clark (un fost oficial Trump care a încercat să folosească Departamentul de Justiție pentru a ajuta eforturile lui Trump de a răsturna rezultatele alegerilor din 2020) conduce acel lucru, iar ordinele executive presupuse implică Legea Insurrecției — o lege actualizată ultima dată în 1871 care permite președintelui să desfășoare armata pentru aplicarea legii interne. Vorbind cu Post, un purtător de cuvânt al Heritage Foundation a negat această acuzație. (Nu am reușit să coroborăm independent raportul The Washington Post din cauza surselor anonime și a încercărilor noastre eșuate de a intervieva membri ai The Heritage Foundation.)</p>
+            
+            <p>Deși multe dintre propunerile Proiectului 2025 au nevoie doar de ordinul executiv al președintelui pentru a deveni realitate, altele ar necesita aprobarea Congresului, chiar și în timp ce Proiectul încearcă să extindă autoritatea prezidențială. Cu alte cuvinte, legiuitorii ar trebui să scrie și să aprobe legislația care detaliază schimbările structurii existente a guvernului sau care stabilește noi sisteme. În noiembrie, alegătorii vor alege cine va ocupa cele 435 de locuri în Camera Reprezentanților condusă de republicani și 34 de poziții în Senat.</p>
+        </div>
+    </div>
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function logout() {
+                alert("Ați fost deconectat!");
+                window.location.href = 'login.php'; 
+            }
+            </script>
+    </body>
+    </html>

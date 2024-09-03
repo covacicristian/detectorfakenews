@@ -1,0 +1,265 @@
+        <!DOCTYPE html>
+        <html lang="ro">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Detector Fake News - Articole</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <style>
+                body {
+                    background-color: #f4f6f9;
+                    color: #333;
+                }
+                .navbar-brand img {
+                    height: 40px;
+                }
+                .container {
+                    margin-top: 20px;
+                }
+                .article-box {
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    background-color: #fff;
+                }
+                .article-image {
+                    text-align: center;
+                }
+                .article-image img {
+                    max-width: 80%; 
+                    height: auto;
+                    border-radius: 8px;
+                }
+                .article-content {
+                    flex: 1;
+                }
+                .article-title {
+                    font-size: 20px;
+                    margin: 0;
+                    color: #333;
+                    font-weight: bold;
+                }
+                .article-byline {
+                    font-size: 16px;
+                    color: #555;
+                    margin-top: 5px;
+                }
+                
+                .top_50_number {
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #007bff;
+                }
+                .content {
+                    margin-top: 20px;
+                }
+                .content h2 {
+                    color: #007bff;
+                }
+                .content img {
+                    max-width: 100%;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                }
+                .content p {
+                    margin-bottom: 20px;
+                }
+                .content .highlight {
+                    font-weight: bold;
+                    color: #d9534f;
+                }
+                .title-container {
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                }
+                .title-container h1 {
+                    font-size: 28px;
+                    margin: 0;
+                    font-weight: bold;
+                }
+                .title-container h2 {
+                    font-size: 18px;
+                    margin-top: 10px;
+                    font-weight: normal;
+                }
+                .highlight-box {
+                    border: 2px solid #007bff;
+                    border-radius: 8px; 
+                    padding: 20px; 
+                    background-color: #fff8e1; 
+                    margin: 20px 0; 
+                }
+                .highlight-box blockquote {
+                    margin: 0;
+                    padding: 10px 0;
+                    font-style: italic;
+                    color: #d9534f; 
+                }
+            
+                .navbar-custom {
+                    background-color: #333;
+                }
+                .navbar-brand img {
+                    width: 40px;
+                    height: 40px;
+                }
+                .nav-link {
+                    color: #fff !important;
+                }
+                .nav-link:hover {
+                    color: #f8f9fa !important;
+                }
+                .logout-btn {
+                    background-color: #dc3545;
+                    border: none;
+                    color: white;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.25rem;
+                }
+                .logout-btn:hover {
+                    background-color: #c82333;
+                    cursor: pointer;
+                }
+                .logout-btn-fixed {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1030; 
+                }
+                    .rating_img_wrap {
+                display: flex;
+                align-items: center;
+            }
+
+            .rating_img_wrap img {
+                margin-right: 15px; 
+            }
+
+            .rating_img_wrap div {
+                font-weight: bold;
+            }
+                </style>
+        </head>
+        <body>
+            <!-- Navigatie -->
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <a class="navbar-brand" href="#"><img src="favicon.ico" alt="Logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="detect.php">Detectare</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="articole.html">Articole</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        
+            <!-- Butonul de logout -->
+            <button class="btn logout-btn logout-btn-fixed" onclick="logout()">Logout</button>
+
+            <div class="container">
+                <section class="title-container">
+                    <h1>Harris plănuiește să impună un impozit de 25% pe câștigurile de capital nerealizate — al celor mai bogați americani</h1>
+                    <h2>Planul va fi „sfârșitul absolut al clasei de mijloc”, conform reprezentantei SUA Lauren Boebert, din Colorado</h2>
+
+                    <div class="article-image">
+                        <img src="articol2.webp" alt="Harris">
+                    </div>
+                </section>
+                <section id="fact_check_rating_container">
+                    <div class="highlight-box">
+                        <div class="claim_wrapper">
+                            <h2><strong>Afirmație:</strong></h2>
+                            <div class="claim_cont">Dacă va fi aleasă, Kamala Harris plănuiește să instituie o taxă de 25% pe câștigurile de capital nerealizate, ceea ce va afecta clasa de mijloc și va provoca o "calamitate economică".</div>
+                        </div>
+                        <div class="rating_wrapper">
+                            <h2><strong>Rating:</strong></h2>
+                            <div class="rating_img_wrap">
+                                <img src="mix.webp" alt="Mix">
+                                <div><strong>Mix</strong></div> 
+                            </div>
+                        </div>
+                        <div class="outer_fact_check_context">
+                            <div class="fact_check_info_wrapper">
+                                <h2><strong>Ce este adevărat?</strong></h2>
+                                <p class="fact_check_info_description">Este adevărat că Harris a susținut un plan de instituire a unei taxe de 25% pe câștigurile de capital nerealizate. Cu toate acestea...</p>
+                            </div>
+                            <div class="fact_check_info_wrapper">
+                                <h2><strong>Ce este fals?</strong></h2>
+                                <p class="fact_check_info_description">... Planul specifica faptul că taxa ar fi aplicată doar celor cu o avere care depășește 100 de milioane de dolari — adică nu clasei de mijloc. Având în vedere că ar afecta doar cei mai bogați 0,01% din țară, este puțin probabil să provoace o "calamitate economică".</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                
+
+                <div class="content">
+                    <h2>Context și Informații</h2>
+                    <p>În timp ce Convenția Națională Democrată a avut loc în Chicago, Illinois, în august 2024, a început să se răspândească o zvon că candidatul prezidențial al partidului, vicepreședintele SUA Kamala Harris, a aprobat o taxă de 25% pe câștigurile de capital nerealizate.</p>
+                    
+        <div id="tweet0" class="twitter_tweet_display_box" data-tweet-id="1826008006167085243" data-callback="lazy_load_c0220270_3e543b16_1"><div class="twitter-tweet twitter-tweet-rendered" style="display: flex; max-width: 550px; width: 100%; margin-top: 10px; margin-bottom: 10px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="X Post" src="https://platform.twitter.com/embed/Tweet.html?creatorScreenName=snopes&amp;dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=1826008006167085243&amp;lang=en&amp;origin=https%3A%2F%2Fwww.snopes.com%2Ffact-check%2Fharris-capital-gains-tax%2F&amp;sessionId=c5ce02db7b23381229c0bbeaa56c6383ea81ecd5&amp;siteScreenName=snopes&amp;theme=light&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716&amp;width=550px" style="position: static; visibility: visible; width: 550px; height: 465px; display: block; flex-grow: 1;" data-tweet-id="1826008006167085243"></iframe></div></div>
+
+
+                    <p><strong>Verificarea Faptelor:</strong> Această postare a primit 4,7 milioane de vizualizări și 59.000 de aprecieri până la scrierea acestui text. Alții de pe X au făcut aceeași afirmație, unul argumentând că această măsură ar dubla prețurile locuințelor (arhivat). Reprezentanta SUA Lauren Boebert, o republicană din Colorado, a spus că această nouă taxă ar afecta cel mai mult clasa de mijloc (arhivat).
+
+                        Vivek Ramaswamy, un antreprenor care a candidat și a pierdut în alegerile primare republicane din 2024 împotriva fostului președinte Donald Trump, a spus că ar duce la o „calamitate economică”.</p>
+                    
+                        <h2>Ce sunt câștigurile de capital nerealizate și ce ar face de fapt acest plan?</h2>
+                    
+                    <p>Câștigurile de capital nerealizate descriu valoarea pe care un activ a câștigat-o în timp ce se află în proprietatea cuiva. Câștigurile de capital realizate sunt profitul efectiv la vânzarea activelor cuiva. Deci, de exemplu, dacă cineva a cumpărat o casă în 2012 cu 200.000 de dolari și casa valorează acum 250.000 de dolari, dar acea persoană o deține în continuare, câștigurile de capital nerealizate sunt de 50.000 de dolari. Acestea sunt cunoscute și sub numele de câștiguri „pe hârtie”.</p>
+                    
+                        <p>Începând cu 16 august 2024, campania Harris a început să-și contureze planul economic. În acest sens, a aprobat bugetul președintelui Joe Biden din 2025, ale cărui propuneri de venituri includeau un „impozit minim [pe venit] pentru miliardari”, care, potrivit bugetului, ar genera 500 de miliarde de dolari în decurs de 10 ani. Aceste câștiguri de capital nerealizate ar fi impozitate ca venit.</p>
+
+                        <p>Conform propunerilor, impozitul de 25% pe câștigurile de capital nerealizate s-ar aplica doar persoanelor cu o avere netă de 100 de milioane de dolari sau mai mult, sau celor mai bogați 0,01% din populația țării. Contrar afirmației lui Boebert, nu ar afecta direct clasa de mijloc. Chiar și atunci, nu s-ar aplica întregului grup vizat, ci doar celor care dețin 80% din averea lor în active tranzacționabile (acțiuni, obligațiuni, criptomonede - cu alte cuvinte, titluri de valoare care pot fi vândute cu ușurință pe o piață secundară).</p>
+
+                        <p>Acest lucru ar exclude pe oricine a cărui avere este formată din acțiuni în companii private sau imobiliare - adică proprietari sau investitori de startup-uri. Ca urmare, acest lucru nu ar „dubla prețurile caselor”, deoarece nimeni nu ar trebui să plătească impozit pe casele lor sau pe nicio altă proprietate imobiliară, contrar a ceea ce au sugerat unii oponenți ai măsurii.</p>
+                        
+                        <p>Câștigurile de capital nerealizate descriu valoarea pe care un activ a câștigat-o în timp ce se află în proprietatea cuiva. Câștigurile de capital realizate sunt profitul efectiv la vânzarea activelor cuiva. Deci, de exemplu, dacă cineva a cumpărat o casă în 2012 cu 200.000 de dolari și casa valorează acum 250.000 de dolari, dar acea persoană o deține în continuare, câștigurile de capital nerealizate sunt de 50.000 de dolari. Acestea sunt cunoscute și sub numele de câștiguri „pe hârtie”.
+
+                            Începând cu 16 august 2024, campania Harris a început să-și contureze planul economic. În acest sens, a aprobat bugetul președintelui Joe Biden din 2025, ale cărui propuneri de venituri includeau un „impozit minim [pe venit] pentru miliardari”, care, potrivit bugetului, ar genera 500 de miliarde de dolari în decurs de 10 ani. Aceste câștiguri de capital nerealizate ar fi impozitate ca venit.
+                            
+                            Conform propunerilor, impozitul de 25% pe câștigurile de capital nerealizate s-ar aplica doar persoanelor cu o avere netă de 100 de milioane de dolari sau mai mult, sau celor mai bogați 0,01% din populația țării. Contrar afirmației lui Boebert, nu ar afecta direct clasa de mijloc. Chiar și atunci, nu s-ar aplica întregului grup vizat, ci doar celor care dețin 80% din averea lor în active tranzacționabile (acțiuni, obligațiuni, criptomonede - cu alte cuvinte, titluri de valoare care pot fi vândute cu ușurință pe o piață secundară).
+                            
+                            Acest lucru ar exclude pe oricine a cărui avere este formată din acțiuni în companii private sau imobiliare - adică proprietari sau investitori de startup-uri. Ca urmare, acest lucru nu ar „dubla prețurile caselor”, deoarece nimeni nu ar trebui să plătească impozit pe casele lor sau pe nicio altă proprietate imobiliară, contrar a ceea ce au sugerat unii oponenți ai măsurii.
+                            
+                            Susținătorii săi au argumentat că acest impozit ar contribui la reducerea inegalităților de avere. Un motiv pentru aceasta este că oamenii pot împrumuta adesea bani la rate mai mici de dobândă în funcție de valoarea actuală a activelor lor, care pot include câștiguri de capital nerealizate. Ca atare, administrația Biden a decis să le trateze ca venit:</p>
+                    <div class="highlight-box">
+                        <blockquote>
+                            Codul fiscal oferă în prezent un tratament special pentru tipurile de venituri de care se bucură oamenii bogați. În timp ce salariile și veniturile pe care le câștigă americanii obișnuiți sunt impozitate ca venituri ordinare, miliardarii își fac banii în moduri care sunt impozitate la rate mai mici, iar uneori nu sunt impozitate deloc. Acest tratament special, combinat cu planificarea fiscală sofisticată și lacunele uriașe, permite multora dintre cei mai bogați americani să plătească rate mai mici pentru veniturile lor totale decât plătesc multe gospodării din clasa de mijloc. Pentru a aborda în sfârșit această inegalitate flagrantă, bugetul include un impozit minim de 25% pentru cei mai bogați 0,01%, cei cu o avere de peste 100 de milioane de dolari.                </blockquote>
+                    </div>            
+                    <p>Un susținător a argumentat în MarketWatch că acest lucru nu ar fi diferit de plata impozitelor municipale pe casa sa, pe baza „valorii estimate” în fiecare an.
+
+                        Dar criticii propunerii se tem că aceasta ar împiedica asumarea de riscuri, care este o parte esențială a menținerii unei economii vibrante. De exemplu, profesoara Siri Terjesen de la Facultatea de Afaceri a Universității din Florida Atlantic a scris în iulie 2024 că ar acționa ca un „buton de oprire pentru antreprenoriat”. „Investitorii ar putea fi mai puțin dispuși să investească în afaceri orientate spre creștere din cauza unor fluctuații mai mari ale evaluării în comparație cu companiile mai mari, stabilite”, a spus ea.</p>
+
+                    <p>Având în vedere că această măsură este destinată să afecteze doar 0,01% din populația cea mai bogată, este puțin probabil să provoace o „calamitate economică”. Dacă s-ar aplica oamenilor din clasa de mijloc, la casele sau investițiile lor, ar putea, de fapt, să le afecteze puterea de cumpărare, capacitatea de a planifica pentru viitor sau capacitatea de a deține case. Așa cum este, totuși, măsura este prea limitată ca scop pentru asta.</p>
+                        <p>În ceea ce privește rata de impozitare de 44,6% la care se face referire într-un e-mail de la un cititor Snopes, aceasta se referea la o pereche de propuneri care ar crește rata de impozitare obișnuită de vârf pentru câștigurile de capital pe termen lung și dividendele calificate pentru persoanele care câștigă mai mult de 1 milion de dolari la 39,6% de la actualul 20%, și rata de investiții nete cu 1,2 puncte procentuale la 5% pentru cei care câștigă mai mult de 400.000 de dolari.</p>
+                        <p>Rata de impozitare pentru câștigurile de capital pe termen lung - active deținute mai mult de un an - pentru cei cu venituri mari ar corespunde ratei pentru câștigurile pe termen scurt, care sunt impozitate la ratele obișnuite, în funcție de categoria de venit a contribuabilului. Propunerea s-ar aplica doar veniturilor contribuabilului peste 1 milion de dolari; de exemplu, o persoană cu venituri impozabile de 1,1 milioane de dolari care includeau 200.000 de dolari din câștiguri de capital pe termen lung ar fi impozitată cu 39,6% pentru 100.000 de dolari din aceste câștiguri și 20% pentru ceilalți 100.000 de dolari. O persoană cu venituri de 900.000 de dolari, inclusiv 200.000 de dolari din câștiguri de capital pe termen lung, ar plăti 20% impozit pe toți cei 200.000 de dolari.</p>
+                
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script>
+                function logout() {
+                    alert("Ați fost deconectat!");
+                    window.location.href = 'login.php'; 
+                }
+                </script>
+        </body>
+        </html>

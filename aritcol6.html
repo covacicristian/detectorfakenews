@@ -1,0 +1,231 @@
+    <!DOCTYPE html>
+    <html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detector Fake News - Articole</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            body {
+                background-color: #f4f6f9;
+                color: #333;
+            }
+            .navbar-brand img {
+                height: 40px;
+            }
+            .container {
+                margin-top: 20px;
+            }
+            .article-box {
+                display: flex;
+                align-items: center;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+            .article-image {
+                text-align: center; 
+            }
+            .article-image img {
+                max-width: 80%; 
+                height: auto;
+                border-radius: 8px;
+            }
+            .article-content {
+                flex: 1;
+            }
+            .article-title {
+                font-size: 20px;
+                margin: 0;
+                color: #333;
+                font-weight: bold;
+            }
+            .article-byline {
+                font-size: 16px;
+                color: #555;
+                margin-top: 5px;
+            }
+            
+            .top_50_number {
+                font-size: 24px;
+                font-weight: bold;
+                color: #007bff;
+            }
+            .content {
+                margin-top: 20px;
+            }
+            .content h2 {
+                color: #007bff;
+            }
+            .content img {
+                max-width: 100%;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .content p {
+                margin-bottom: 20px;
+            }
+            .content .highlight {
+                font-weight: bold;
+                color: #d9534f;
+            }
+            .title-container {
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .title-container h1 {
+                font-size: 28px;
+                margin: 0;
+                font-weight: bold;
+            }
+            .title-container h2 {
+                font-size: 18px;
+                margin-top: 10px;
+                font-weight: normal;
+            }
+            .highlight-box {
+                border: 2px solid #007bff; 
+                border-radius: 8px; 
+                padding: 20px; 
+                background-color: #fff8e1; 
+                margin: 20px 0; 
+            }
+            .highlight-box blockquote {
+                margin: 0;
+                padding: 10px 0;
+                font-style: italic;
+                color: #d9534f; 
+            }
+            .navbar-custom {
+                background-color: #333;
+            }
+            .navbar-brand img {
+                width: 40px;
+                height: 40px;
+            }
+            .nav-link {
+                color: #fff !important;
+            }
+            .nav-link:hover {
+                color: #f8f9fa !important;
+            }
+            .logout-btn {
+                background-color: #dc3545;
+                border: none;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+            }
+            .logout-btn:hover {
+                background-color: #c82333;
+                cursor: pointer;
+            }
+            .logout-btn-fixed {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1030; 
+            }
+                .rating_img_wrap {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .rating_img_wrap img {
+                        margin-right: 15px; 
+                    }
+
+                    .rating_img_wrap div {
+                        font-weight: bold;
+                    }
+        </style>
+    </head>
+    <body>
+        <!-- Navigatie -->
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <a class="navbar-brand" href="#"><img src="favicon.ico" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="detect.php">Detectare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articole.html">Articole</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- Butonul de logout -->
+        <button class="btn logout-btn logout-btn-fixed" onclick="logout()">Logout</button>
+
+        <div class="container">
+            <section class="title-container">
+                <h1>Harta arată cum va arăta SUA „dacă nu inversăm schimbările climatice”?</h1>
+                <h2>Harta, care circulă online din cel puțin 2014, ar arăta cum va arăta țara „în 30 de ani”.</h2>
+
+                <div class="article-image">
+                    <img src="articol7.webp" alt="USA">
+                </div>
+            </section>
+            <section id="fact_check_rating_container">
+                <div class="highlight-box">
+                    <div class="claim_wrapper">
+                        <h2><strong>Afirmație:</strong></h2>
+                        <div class="claim_cont">O hartă creată de oamenii de știință arată cum va arăta SUA „dacă nu inversăm schimbările climatice”</div>
+                    </div>
+                    <div class="rating_wrapper">
+                        <h2><strong>Rating:</strong></h2>
+                        <div class="rating_img_wrap">
+                            <img src="neinteles.webp" alt="intrebare">
+                            <div><strong>Titlu greșit</strong></div> 
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <div class="content">
+                <h2>Context și Informații</h2>
+                <p>De ani de zile, o hartă a SUA care ar arăta ce se va întâmpla cu țara dacă "nu inversăm schimbările climatice" a circulat pe rețelele sociale. Harta arată o masă de apă întinzându-se de la California până la Carolina de Nord, suprapusă pe o hartă a SUA continentale, arătând o mare parte din națiune sub apă. Am găsit postări care repetau această afirmație, cu harta atașată, pe platforme de socializare precum Facebook, Reddit și X.</p>
+
+                
+                <p>O căutare inversă a imaginilor a dezvăluit o postare pe Pinterest care prezenta de asemenea harta, în acest caz creditată lui Bret Drager și intitulată "Marea Mediterană a Americii".</p>
+                
+                <p>printr-o simpă căutare după cuvinte cheie pe Google, se poate descoperi că a fost postată pentru prima dată pe 4 februarie 2014, pe un blog de pe site-ul de arhitectură Drager Architecture. O descriere care însoțea harta spunea, în parte:</p>
+                                    
+                <div class="highlight-box">
+                    <blockquote>
+                        <p>Am avut plăcerea de a face o croazieră în jurul Mediteranei acum câțiva ani. Soția mea și cu mine ne-am bucurat foarte mult explorând locurile istorice și artefactele, precum și viața orașelor necunoscute. M-am gândit: oare nu ar fi minunat dacă Mediterana nu ar fi atât de departe?</p>
+
+                        <p>Ei bine, am studiat hărți și globuri și am realizat că Marea Mediterană se află la aceeași latitudine ca Statele Unite. Dacă ar fi posibil să rotim Marea Mediterană pe partea noastră a planetei? Ar încăpea? Ce efect ar avea aceasta? Ce se întâmplă cu statele… noi linii de coastă în mijlocul țării… noi relații… state sfâșiate în bucăți?</p>
+                        
+                        <p>Câteva capturi de ecran, multă manipulare grafică și acum știm. Marea Mediterană se încadrează în limitele Statelor Unite ale Americii. Într-un fel, este destul de uimitor cât de mare este Marea Mediterană. De obicei, considerăm Statele Unite ca fiind o țară vastă, cu mai mult de 3000 de mile de la coasta estică la coasta vestică. A fost odată o sarcină destul de dificilă să traversezi această distanță. Uimitor, marinarii antici din Mediterană au traversat zone similare de apă pentru comerțul și cuceririle lor.</p>
+                        
+                        <p>Deci, ce am făcut? Aceasta este o nouă viziune a Statelor Unite ale Americii. Câteva state au rămas neafectate de această combinație: Washington, Oregon, Arizona, Minnesota, Wisconsin, Louisiana, Ohio, Pennsylvania, Maryland, Delaware, New Jersey, Connecticut, Rhode Island, Massachusetts, New Hampshire, Vermont, Maine și Florida. Da, ignor Alaska și Hawaii deoarece sunt îndepărtate, îmi pare rău.</p>
+                                    </div>            
+            
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function logout() {
+                alert("Ați fost deconectat!");
+                window.location.href = 'login.php'; 
+            }
+            </script>
+    </body>
+    </html>

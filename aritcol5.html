@@ -1,0 +1,237 @@
+    <!DOCTYPE html>
+    <html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detector Fake News - Articole</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            body {
+                background-color: #f4f6f9;
+                color: #333;
+            }
+            .navbar-brand img {
+                height: 40px;
+            }
+            .container {
+                margin-top: 20px;
+            }
+            .article-box {
+                display: flex;
+                align-items: center;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+            .article-image img {
+                width: 100px; 
+                height: auto;
+                border-radius: 8px;
+                margin-right: 15px;
+            }
+            .article-content {
+                flex: 1;
+            }
+            .article-title {
+                font-size: 20px;
+                margin: 0;
+                color: #333;
+                font-weight: bold;
+            }
+            .article-byline {
+                font-size: 16px;
+                color: #555;
+                margin-top: 5px;
+            }
+           
+            .top_50_number {
+                font-size: 24px;
+                font-weight: bold;
+                color: #007bff;
+            }
+            .content {
+                margin-top: 20px;
+            }
+            .content h2 {
+                color: #007bff;
+            }
+            .content img {
+                max-width: 100%;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .content p {
+                margin-bottom: 20px;
+            }
+            .content .highlight {
+                font-weight: bold;
+                color: #d9534f;
+            }
+            .title-container {
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .title-container h1 {
+                font-size: 28px;
+                margin: 0;
+                font-weight: bold;
+            }
+            .title-container h2 {
+                font-size: 18px;
+                margin-top: 10px;
+                font-weight: normal;
+            }
+            .article_img img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin-top: 15px;
+            }
+            .navbar-custom {
+                background-color: #333;
+            }
+            .navbar-brand img {
+                width: 40px;
+                height: 40px;
+            }
+            .nav-link {
+                color: #fff !important;
+            }
+            .nav-link:hover {
+                color: #f8f9fa !important;
+            }
+            .logout-btn {
+                background-color: #dc3545;
+                border: none;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+            }
+            .logout-btn:hover {
+                background-color: #c82333;
+                cursor: pointer;
+            }
+            .logout-btn-fixed {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1030; 
+            }
+            .highlight-box {
+                        border: 2px solid #007bff; 
+                        border-radius: 8px; 
+                        padding: 20px; 
+                        background-color: #fff8e1; 
+                        margin: 20px 0; 
+                    }
+                    .highlight-box blockquote {
+                        margin: 0;
+                        padding: 10px 0;
+                        font-style: italic;
+                        color: #d9534f; 
+                    }
+            .rating_img_wrap {
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .rating_img_wrap img {
+                            margin-right: 15px; /* Spațiu între imagine și text */
+                        }
+
+                        .rating_img_wrap div {
+                            font-weight: bold;
+                        }   
+        </style>
+    </head>
+    <body>
+        <!-- Navigatie -->
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <a class="navbar-brand" href="#"><img src="favicon.ico" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="detect.php">Detectare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articole.html">Articole</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- Butonul de logout -->
+        <button class="btn logout-btn logout-btn-fixed" onclick="logout()">Logout</button>
+        <div class="container">
+            <section class="title-container">
+                <h1>Simone Biles Donează $4M pentru Campania lui Harris-Walz?</h1>
+                <h2>Cei $4M au fost raportați că vin de la fiecare medalie din cele 4 ale starului gimnasticii din USA, câștigate la Jocurile Olimpice de la Paris.</h2>
+
+                <div class="article_img">
+                    <img src="articol6.jpg" alt="Simone Biles">
+                </div>
+            </section>
+
+            <section id="fact_check_rating_container">
+                <div class="highlight-box">
+                    <div class="claim_wrapper">
+                        <h2><strong>Afirmație:</strong></h2>
+                        <div class="claim_cont">Gimnasta americană Simone Biles intenționează să anunțe o donație de 4 milioane de dolari pentru campania prezidențială a lui Kamala Harris și Tim Walz din 2024.</div>
+                    </div>
+                    <div class="rating_wrapper">
+                        <h2><strong>Rating:</strong></h2>
+                        <div class="rating_img_wrap">
+                            <img src="unfounded.webp" alt="fals">
+                            <div><strong>Informații negăsite</strong></div> 
+                        </div>
+                    </div>
+                        
+                </div>
+            </section>
+
+            <div class="content">
+                <h2>Context și Informații</h2>
+                <p>Pe 7 august 2024, în ultimele zile ale Jocurilor Olimpice de la Paris din 2024, un mesaj pe X (fostul Twitter) susținea că Simone Biles, considerată adesea cea mai talentată gimnastă din lume, urma să anunțe o donație de 4 milioane de dolari pentru campania prezidențială a vicepreședintei Kamala Harris și a guvernatorului din Minnesota, Tim Walz. Postarea a devenit imediat populară, strângând peste 87.000 de aprecieri, în timp ce utilizatorii au distribuit presupusa știre pe Facebook.</p>
+                
+                <div id="tweet0" class="twitter_tweet_display_box" data-tweet-id="1821076042196635830" data-callback="lazy_load_9b383be8_f3e21507_1">
+                    <div class="twitter-tweet twitter-tweet-rendered" style="display: flex; max-width: 550px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="X Post" src="https://platform.twitter.com/embed/Tweet.html?creatorScreenName=snopes&amp;dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=1821076042196635830&amp;lang=en&amp;origin=https%3A%2F%2Fwww.snopes.com%2Ffact-check%2Fsimone-biles-harris-donation%2F&amp;sessionId=bd4b439a17ffd55a87537d9788042d7d3caab50a&amp;siteScreenName=snopes&amp;theme=light&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716&amp;width=550px" style="position: static; visibility: visible; width: 550px; height: 697px; display: block; flex-grow: 1;" data-tweet-id="1821076042196635830"></iframe>
+                    </div>
+                </div>
+
+                <p><strong>Verificarea Faptelor:</strong> După o investigație detaliată,nu s-a găsit nicio dovadă care să sugereze că Biles intenționa să facă o donație pentru campania lui Harris, cu atât mai puțin una de 4 milioane de dolari.</p>
+
+                <p>Mai mult, postarea susținea doar că Biles urma să „anunțe oficial” donația sa, nu că ar fi donat deja. Deoarece această formulare doar implică faptul că Biles va dona, dar nu a donat încă bani pentru campania lui Harris, aplicarea unei etichete clare de „adevărat” sau „fals” asupra afirmației devine imposibilă. Ca atare, am evaluat această afirmație drept „nefondată”.</p>
+
+                <p>Este, de asemenea, important de menționat că a face o donație de 4 milioane de dolari direct către orice campanie politică ar fi ilegal conform legii federale. Conform site-ului Comisiei Electorale Federale (FEC), persoanele fizice au voie să doneze până la 3.300 de dolari unui candidat individual la fiecare alegere. Limitele de donație mai mari se aplică dacă donația este făcută către un Comitet de Acțiune Politică (PAC) sau un partid politic, și doar Super PAC-urile, care sunt interzise să contribuie direct la campaniile politice, pot accepta sume nelimitate de bani.</p>
+                
+                <p>Legea federală mai dictează că fiecare donație către o campanie politică trebuie urmărită și înregistrată la FEC. Deși formularea exactă a afirmației sugera că Biles nu a donat încă, am căutat totuși în baza de date de finanțare a campaniei FEC donații făcute de „Simone Biles” din precauție. Nu am găsit rezultate din 2023 și 2024, ceea ce înseamnă că Biles nu a făcut nicio donație politică de la începutul anului 2023.</p>
+                
+                <p>Îndoielile legate de această afirmație sunt amplificate și de cât de mulți bani are de fapt Biles. Mai multe articole susțineau că Biles ar valora 25 de milioane de dolari, citând cifra de pe site-ul CelebrityNetWorth.com. Deși Snopes nu a putut confirma independent această cifră, Biles a câștigat aproximativ 10 milioane de dolari în 2022 și 7,1 milioane de dolari în 2023, conform Forbes. Ca atare, am considerat că 25 de milioane de dolari ar fi o estimare rezonabilă a averii nete a lui Biles.            </p>
+                
+                <p>Totuși, un calcul rapid pe baza acestei cifre arată că o donație de 4 milioane de dolari ar reprezenta aproximativ 16% din valoarea totală a averii sale. Deși nu este imposibil (din nou, de aceea am evaluat această afirmație ca „nefondată”), am considerat că este foarte puțin probabil ca Biles să doneze 16% din averea sa dintr-o singură mișcare.
+                </p>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function logout() {
+                alert("Ați fost deconectat!");
+                window.location.href = 'login.php'; 
+            }
+            </script>
+    </body>
+    </html>
